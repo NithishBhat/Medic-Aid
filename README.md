@@ -5,8 +5,11 @@ A working demo is currently live on https://red1998.pythonanywhere.com/
 
 
 the project was made using:
+
 1.python 3.8
+
 2.Flask
+
 3.MySQL server
 oher requirements are metioned in the requirements.txt file
 
