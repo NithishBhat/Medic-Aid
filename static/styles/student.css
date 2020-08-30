@@ -1,0 +1,134 @@
+body{
+    background-image: url('FYP2.png');
+}
+label{
+    color:white;
+}
+.container{
+    border-radius:10px;
+    margin:30px;
+    width:800px;
+    height:auto;
+    background-color:rgba(44, 51, 51, 0.438);
+    padding:30px;
+}
+#instructions{
+    color: aliceblue;
+}
+.logincontainer{
+
+    border-radius:10px;
+    width:900px;
+    height:auto;
+    background-color:rgba(19, 22, 17, 0.356);
+    padding:30px;
+    float:center;
+    width: 50%;
+    display: block;
+    margin-top: 10%;
+    margin-left: auto;
+    margin-right: auto;
+    
+}
+#heading{
+    
+
+   color:white
+}
+#enter{
+    
+    color:rgb(247, 247, 247);
+    margin:10px;
+    margin-left: 10px;
+    
+
+}
+#textbox{
+        height: 300px;
+        margin-left:80px;
+        width:500px;
+        max-width: 750px;
+        border-radius:10px;
+}
+#id1{
+    background-color:rgb(11, 115, 156);
+    color:rgb(255, 255, 255);
+    border-radius:5px;border: none;
+    height:30px;
+    width:100px;
+    margin:10px;
+    margin-left: 95px;
+}
+table{
+    margin:20px;
+    padding:10px;
+    margin-left:63px;
+    color:rgb(250, 250, 250);
+    border:none;
+}
+#start-btn,#stop-btn{
+    border-radius:10px;
+    background-color:rgb(11, 115, 156);
+    border:none;
+    color:white;
+    padding:4px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin:10px;
+
+}
+.mywebapp{
+    margin-left:40px;
+  
+
+
+}
+ul{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: rgba(51, 51, 51, 0.842);
+    box-shadow: 0px 5px 5px 0px rgba(1,0,0,0.2);
+    
+}
+li a {
+    float: right;
+}
+li a {
+    display: block;
+    color: rgb(255, 255, 255);
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+li a.active {
+    background-color: rgb(255, 255, 255);
+    color: rgb(10, 10, 10);
+    text-decoration: none;
+}
+
+li a:hover:not(.active) {
+    background-color: black;
+    color: white;
+    text-decoration: none;
+    transition-duration: 1s;
+}
+#navbaricon{
+    height:47px;
+    width:50px;
+    padding-left: 10px;
+    border-radius:7px;
+    
+
+}
+td, th {
+    border:none;
+    text-align: left;
+    padding: 8px;
+  }
+  
+  tr:nth-child(even) {
+    background-color: #00000091;
+  }
+
