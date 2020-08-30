@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+      <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <meta http-equiv="X-UA-Compatible" content="ie=edge">
+            <title>MEDIC AID</title>
+            <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/student.css') }}">
+            <link rel="shortcut icon" type="image/x-icon" href="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRl9c8Y4pbbvJSsFVUzso83HDquJmDxTg-YPPHjXyxyB_ioPQu-&usqp=CAU" />
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+      </head>
+   <body style="background-color:rgba(32, 29, 29, 0.932);">
+      <ul>
+         <li><a href="/logout"><i class="fa fa-fw fa-sign-out"></i>Logout</a></li>
+         <li><a href="/history"><i class="fa fa-fw fa-user"></i>History</a></li>
+         <li><a href="/student"><i class="fa fa-fw fa-user"></i>Home</a></li>
+         <li><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRl9c8Y4pbbvJSsFVUzso83HDquJmDxTg-YPPHjXyxyB_ioPQu-&usqp=CAU" id="navbaricon"></li>
+       </ul>
+       <center><h2 id="heading"><b>MEDIC AID</b></h2> <center>    
+      <div class="container">
+                  
+                    <table  border = 1 width:200px>
+                        <tr width:200px>
+                            <th> Date and time </th>
+                           <th> Text </th>
+                           <th> Classsification </th>
+                        </tr>
+                        {% for i in result %}
+                        <tr>
+                         {% for j in i %}
+                        
+                            <td>{{j}}</td>
+                        
+                        {% endfor %}
+                       </tr>
+                       {% endfor %}
+                  </table>
+ 
+      </div>
+   </body>
+</html>

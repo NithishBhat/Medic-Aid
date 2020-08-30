@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+      <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <meta http-equiv="X-UA-Compatible" content="ie=edge">
+            <title>MEDIC AID</title>
+            <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/student.css') }}">
+            <link rel="shortcut icon" type="image/x-icon" href="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRl9c8Y4pbbvJSsFVUzso83HDquJmDxTg-YPPHjXyxyB_ioPQu-&usqp=CAU" />
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+      
+         </head>
+   <body>
+      <ul>
+         <li><a href="/logout"><i class="fa fa-fw fa-sign-out"></i>Logout</a></li>
+         <li><a href="/history"><i class="fa fa-fw fa-user"></i>History</a></li>
+         <li><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRl9c8Y4pbbvJSsFVUzso83HDquJmDxTg-YPPHjXyxyB_ioPQu-&usqp=CAU" id="navbaricon"></li>
+       </ul>
+   <center><h2 id="heading"><b>MEDIC AID</b></h2> </center> 
+      <div class="container" >
+          
+            <div class="row">
+              <p id=enter>Please describe your ailment:</p>
+            </div>
+
+            <div class="row">   
+               <div class="col">
+               <form action = "/result" method = "POST">
+                  <div class="input">
+                     <textarea name="text" id="textbox" rows="6"></textarea>
+                     <div class="row">  
+                        <input type = "submit" value = "submit" id="id1" />
+                     </div>
+                  </div>
+               </form> 
+            </div> 
+         
+            <div class="col">
+               <div class="mywebapp">        
+                  <button id="start-btn" title="Start">Start</button>
+                  <button id="stop-btn" title="Stop">Stop</button>
+                  <p id="instructions"> Powered by Speech Recognition</p>
+               </div>
+            </div>
+               </div>
+
+               
+      <table border = 1>
+         {% for key, value in result.items() %}
+         <tr>
+            {% if key != 'medicine' %}
+             <th> {{ key }} </th>
+            <td> {{ value }}  </td>
+            {% endif %}
+         </tr>
+         {% endfor %}
+         <tr>
+            <th> medicine</th>
+            
+           <td>  <form action = "/medicine" method = "POST">
+                   <input type = "submit" value = "Medicine link" id="id1" />
+                   <!-- <a href="{{ '%s'%result['medicine'] }}">link</a>-->
+                  </form>
+          </td>
+        </tr>
+      </table>
+  
+
+   </div>
+   <script src="{{ url_for('static', filename="js/script.js")}}"></script>
+   </script>
+</body>
+</html>
