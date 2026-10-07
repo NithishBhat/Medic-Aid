@@ -1,35 +1,62 @@
 # Medic-Aid
-Web application for classification and recommendation of medicines
 
-A working demo is currently live on https://red1998.pythonanywhere.com/ 
+A Flask web app that classifies a user's description of their symptoms (typed or spoken) into one of 25 ailment categories using an NLP model, then recommends self-care guidance and over-the-counter medicines from a MySQL database. The work was published as a paper in IJRASET (August 2020); the PDF is included in this repo.
 
+## Tech Stack
 
-the project was made using:
+- **Backend:** Python 3.8, Flask, Flask-MySQLdb
+- **ML / NLP:** scikit-learn (CountVectorizer + TF-IDF + Logistic Regression pipeline), pandas
+- **Database:** MySQL (schema and seed data in `medicaldatabase.sql`)
+- **Auth:** bcrypt password hashing, Flask sessions
+- **Frontend:** Jinja2 templates, CSS, jQuery, Web Speech API (`webkitSpeechRecognition`) for voice input
 
-1.python 3.8
+## Features
 
-2.Flask
+- **User accounts:** registration and login with bcrypt-hashed passwords
+- **Symptom classification:** free-text symptom descriptions are classified into 25 ailments (e.g. back pain, cough, headache, skin issue, stomach ache) by a TF-IDF + Logistic Regression text classifier trained on ~6,600 labelled medical speech utterances (`overview-of-recordings.csv`, from Appen's open-source dataset)
+- **Voice input:** speak symptoms in the browser instead of typing (Chrome, via the Web Speech API)
+- **Remedy recommendations:** for the predicted ailment, shows common causes, self-treatment tips, related conditions, and when to seek medical care
+- **Medicine suggestions:** lists matching medicines with price, main ingredient, description, and image
+- **History:** each query and its classification is stored per user and viewable on a history page
 
-3.MySQL server
+## Getting Started
 
-oher requirements are metioned in the requirements.txt file
+### Prerequisites
+- Python 3.8
+- MySQL server (the original setup used phpMyAdmin)
 
- The file consists of contents of virtual environment files exculding the Lib file.
- TEMPLATE: Consists of the HTML page the website uses
- 
- STATIC: this file conatins images of medicines,css files, javascript files and html background image.
- 
- TEMPLATE.py: the main python app file contains the main code.
- 
- MEDICALDATABASE.SQL: the database file containing queries to create and insert data into tables
- 
- PUBLISHED PAPER: we have also publised a paper on an UGC approved journal IJRASET so this is the published paper
- 
- NOTE: 
- things you need to change for the project to work on your computer
- 
- 1.You need to create a database, i used PHPMyAdmin for this hence i attached a .mysql file which contains all the data.
- 
- 2.create a virtual environment and install all the packages in the requirement file.
- 
- to improve the accuracy of the model you can use more of the dataset. i only used 6000 samples. the data is available  on the appen website(open source)
+### Setup
+
+```bash
+# 1. Create a virtual environment and install dependencies
+python -m venv venv
+venv\Scripts\activate          # Windows  (source venv/bin/activate on macOS/Linux)
+pip install -r requirements.txt
+
+# 2. Create the database and load the schema + data
+mysql -u root -e "CREATE DATABASE medicaldatabase"
+mysql -u root medicaldatabase < medicaldatabase.sql
+
+# 3. Run the app
+python template.py
+```
+
+The app runs at `http://127.0.0.1:5000`. MySQL connection settings (`MYSQL_USER`, `MYSQL_PASSWORD`, `MYSQL_HOST`, `MYSQL_DB`) are configured at the top of `template.py`; update them to match your local MySQL setup.
+
+## Project Structure
+
+```
+Medic-Aid/
+├── template.py                 # Flask app: routes, auth, ML model, DB queries
+├── medicaldatabase.sql         # MySQL schema + data (users, remedy, medicine, user_data)
+├── overview-of-recordings.csv  # Labelled symptom phrases used to train the classifier
+├── requirements.txt
+├── templates/                  # Jinja2 pages (login, register, student, result, medicine, history)
+├── static/                     # Medicine images, CSS, and speech-recognition JS
+└── Published paper.pdf         # IJRASET paper describing the project
+```
+
+## Notes
+
+- The classifier is trained from the CSV (70/30 train/test split) inside the prediction function. Accuracy can be improved by using more of the source dataset.
+- This is a student project and is **not** a substitute for professional medical advice.
