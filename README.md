@@ -41,7 +41,7 @@ mysql -u root medicaldatabase < medicaldatabase.sql
 python template.py
 ```
 
-The app runs at `http://127.0.0.1:5000`. MySQL connection settings (`MYSQL_USER`, `MYSQL_PASSWORD`, `MYSQL_HOST`, `MYSQL_DB`) are configured at the top of `template.py`; update them to match your local MySQL setup.
+The app runs at `http://127.0.0.1:5000`. MySQL connection settings (`MYSQL_USER`, `MYSQL_PASSWORD`, `MYSQL_HOST`, `MYSQL_DB`) are read from environment variables of the same name (defaults: `root`, empty password, `localhost`, `medicaldatabase`). Set `FLASK_SECRET_KEY` for a stable session key; otherwise a random one is generated at startup.
 
 ## Project Structure
 

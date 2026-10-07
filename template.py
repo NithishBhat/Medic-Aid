@@ -1,3 +1,4 @@
+import os
 from flask import Flask, render_template, request
 app = Flask(__name__)
 from flask import Flask, render_template, request, redirect, url_for, session
@@ -67,10 +68,10 @@ def prediction(result):
 
 app = Flask(__name__)
 
-app.config['MYSQL_USER'] = 'root'
-app.config['MYSQL_PASSWORD'] = ''
-app.config['MYSQL_HOST'] = 'localhost'
-app.config['MYSQL_DB'] = 'medicaldatabase'
+app.config['MYSQL_USER'] = os.environ.get('MYSQL_USER', 'root')
+app.config['MYSQL_PASSWORD'] = os.environ.get('MYSQL_PASSWORD', '')
+app.config['MYSQL_HOST'] = os.environ.get('MYSQL_HOST', 'localhost')
+app.config['MYSQL_DB'] = os.environ.get('MYSQL_DB', 'medicaldatabase')
 mysql = MySQL(app)
 
 @app.route('/',methods=["GET","POST"])
@@ -197,5 +198,5 @@ def logout():
       
  
 if __name__ == '__main__':
-    app.secret_key = "^A%DJAJU^JJ123"
+    app.secret_key = os.environ.get("FLASK_SECRET_KEY") or os.urandom(24)
     app.run(debug=True)
